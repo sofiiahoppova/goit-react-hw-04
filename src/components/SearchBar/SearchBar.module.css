@@ -1,0 +1,32 @@
+.wrapper {
+  width: 100%;
+  padding: 12px 0;
+  background-color: mediumslateblue;
+  margin-bottom: 24px;
+}
+.formWrapper {
+  display: block;
+  position: relative;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 12px;
+  width: 240px;
+}
+.searchBtn {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  border: none;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.textInput {
+  padding-left: 32px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
