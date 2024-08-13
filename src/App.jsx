@@ -36,7 +36,6 @@ const App = () => {
       setIsLoading(true);
       try {
         const data = await fetchPhotos(value, pageNumber);
-        console.log(data);
         setImages((prevImages) => {
           if (prevImages !== null) {
             return [...prevImages, ...data.results];
