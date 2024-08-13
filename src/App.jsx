@@ -13,7 +13,6 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [searchingValue, setSearchingValue] = useState("");
-  const [loadMoreBtn, setLoadMoreBtn] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [pageNumber, setPageNumber] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
@@ -29,12 +28,6 @@ const App = () => {
   function closeModal() {
     setIsOpen(false);
   }
-
-  useEffect(() => {
-    setImages(null);
-    setPageNumber(1);
-    setLoadMoreBtn(false);
-  }, [searchingValue]);
 
   useEffect(() => {
     if (searchingValue.trim() === "") return;
@@ -59,7 +52,6 @@ const App = () => {
           });
           return;
         }
-        setLoadMoreBtn(true);
       } catch (error) {
         setError(true);
       } finally {
@@ -69,13 +61,9 @@ const App = () => {
     getPhotos(searchingValue);
   }, [searchingValue, pageNumber]);
 
-  useEffect(() => {
-    if (totalPages === pageNumber) {
-      setLoadMoreBtn(false);
-    }
-  }, [totalPages, pageNumber]);
-
   const handleSubmit = (userValue) => {
+    setImages(null);
+    setPageNumber(1);
     setSearchingValue(userValue);
   };
 
@@ -96,7 +84,7 @@ const App = () => {
       />
       {isLoading && <Loader />}
       {error && <ErrorMessage />}
-      {loadMoreBtn && (
+      {totalPages > pageNumber && (
         <LoadMoreBtn
           handleClick={() => {
             setPageNumber(pageNumber + 1);

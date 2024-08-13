@@ -1,0 +1,10 @@
+.photo {
+  display: block;
+  max-width: 900px;
+  margin: auto;
+  margin-bottom: 12px;
+}
+.descrription {
+  text-align: center;
+  font-size: 18px;
+}
